@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class phone {
+            constructor(brand, model, price) {
+                this.brand = brand,
+                    this.model = model,
+                    this.price = price
+            }
+
+            describe() {
+                return `The ${this.brand} ${this.model} costs ${this.price}`;
+            }
+
+            isexpensive(budget) {
+                return this.price > budget
+            }
+
+            getInfo() {
+                return `Brand: ${this.brand} | Model: ${this.model} | Price: ${this.price}`
+            }
+        }
+
+        class Budget extends phone {
+            constructor(brand, model, price, warranty) {
+                super(brand, model, price)
+                this.warranty = warranty;
+            }
+
+            warrantyInfo() {
+                return `This phone has ${this.warranty} year warranty`;
+            }
+
+            describe() {
+                return `BUDJECT PICK: ${this.brand} at ${this.price}`
+            }
+        }
+
+        let phone1 = new phone("iphone", 13, 540000);
+        let phone2 = new phone("Google", "pixel", 680000);
+
+        const fon1 = phone1.describe();
+        const fon2 = phone2.describe();
+
+        const BudgetPhone = {
+            // Current Object
+        }
+
+        let phone3 = new Budget("iphone" , 14, 600000, 2);
+        let phone4 = new Budget("redmi", "A05", 120000, 4);
+        let phone5 = new Budget("samsung", "A05s", 230000, 3);
+
+        BudgetPhone.phoneThree = phone3.warrantyInfo();
+        BudgetPhone.phoneFour = phone4.warrantyInfo();
+        BudgetPhone.phoneFive = phone5.warrantyInfo();
+
+        console.log(BudgetPhone)
+
+        const obj = {
+            // phones
+        }
+
+        // obj.phone1 = fon1;
+        // obj.phone2 = fon2;
+
+        // console.log(obj)
+
+        // console.log(phone2.isexpensive(100000))
+
+
+        // console.log(phone1.getInfo())
+
+
+
+    </script>
+</body>
+
+</html>

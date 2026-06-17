@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Task 1 -->
+
+
+    <!-- <h1 id="name">My name is ______</h1>
+    <p class="school">I study at _____</p>
+    <p class="school">My course is _______</p>
+    <button id="btn">Reveal Info</button> -->
+
+
+
+    <!-- Task 2 -->
+
+
+    <!-- <div id="box">
+        Watch me Change!
+    </div>
+    <button id="colorBtn">Change Color</button>
+    <button id="hideBtn">Hide Box</button>
+    <button id="showBtn">Show Box</button> -->
+
+
+    <!-- Example 1 -->
+    <!-- <div id="box">HI</div>
+    <button onclick="btnClick()">Click</button> -->
+
+
+    <!-- Task 3 -->
+
+    <div class="card">Card1</div>
+    <div class="card">Card2</div>
+    <div class="card">Card3</div>
+    <div class="card">Card4</div>
+
+    <button id="highlightBtn">Highlight All</button>
+    <button id="resetBtn">Reset</button>
+
+    <script>
+
+        // All Task and Example 1
+
+
+        // let body = document.querySelector("body")
+        // let btn = document.getElementById("btn");
+
+        // btn.onclick = function(){
+        //     document.getElementById("name").innerHTML = `My name is ISRAEL`;
+
+        //     let parse = document.getElementsByClassName("school");
+
+        //     parse[0].innerHTML = `I study at UNILAG`;
+        //     parse[1].innerHTML = `My course is computer science`;
+
+
+        //     btn.innerHTML = `Done!`
+
+        //     // body.innerHTML = ``
+        // }
+
+        // Changing Styles
+        // function btnClick() {
+        //     let box = document.querySelector("#box");
+
+        //     box.style.backgroundColor = "red";
+        //     box.style.fontSize = "24px";
+        // }
+
+
+        // Javascript snippet for Task 2
+
+        //    let changeColor = document.getElementById("colorBtn");
+
+        //    changeColor.onclick = function() {
+        //     let container = document.getElementById("box");
+
+        //     container.style.backgroundColor = "black";
+        //     container.style.color = "white";
+        //    }
+
+        //    let hideBtn = document.getElementById("hideBtn");
+
+        //    hideBtn.onclick = function() {
+        //     let container = document.getElementById("box");
+
+        //     container.style.display = "none";
+        //    }
+
+        //    const showBtn = document.getElementById("showBtn");
+
+        //    showBtn.onclick = function() {
+        //     let container = document.getElementById("box");
+
+        //     container.style.display = "block";
+        //    }
+
+
+        // Task 3
+
+        let highlight = document.getElementById("highlightBtn");
+
+        highlight.onclick = function () {
+            let card = document.querySelectorAll(".card");
+
+            card.forEach(function(card){
+                card.style.backgroundColor = "yellow";
+                card.style.border = "2px solid black"
+            })
+        }
+
+        let resetBtn = document.getElementById("resetBtn");
+
+        resetBtn.onclick = function() {
+            let card = document.querySelectorAll(".card");
+
+            card.forEach(function(card){
+                card.style.backgroundColor = "";
+                card.style.border = "none"
+            })
+        }
+
+    </script>
+</body>
+
+</html>

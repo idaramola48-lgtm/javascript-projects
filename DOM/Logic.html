@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <p id="message">Old text</p>
+    <button id="changeBtn">Change</button> -->
+
+    <!-- Drill 2 -->
+    <!-- <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+    <button id="hideBtn">Hide All</button> -->
+
+    <!-- DRILL 3 -->
+
+    <!-- <div class="number">12</div>
+    <div class="number">7</div>
+    <div class="number">20</div>
+    <div class="number">3</div>
+    <button id="checkBtn">Check</button> -->
+
+    <!-- DRILL 4 -->
+
+    <div class="team">
+        <p class="player">John: 5 goals</p>
+        <p class="player">Mike: 3 goals</p>
+    </div>
+    <div class="team">
+        <p class="player">Tunde: 8 goals</p>
+        <p class="player">Emeka: 1 goal</p>
+    </div>
+    <button id="totalBtn">Show Totals</button>
+
+
+    <script>
+        // const getContent = document.getElementById("changeBtn");
+
+        // getContent.onclick = function () {
+        //     document.getElementById('message').innerHTML = `New Text`;
+
+        // }
+
+        // DRILL 2
+
+        // const btn = document.getElementById("hideBtn");
+
+        // btn.onclick = function () {
+        //     let boxes = document.querySelectorAll('.box');
+
+        //     boxes.forEach(function(box){
+        //         box.style.display = 'none'
+        //         console.log('HIDDEN')
+        //     })
+        // }
+
+        // DRILL 3
+
+        // const checkBtn = document.getElementById("checkBtn");
+
+        // checkBtn.onclick = function () {
+        //     let numbers = document.querySelectorAll('.number');
+        //     // console.log()
+
+        //     numbers.forEach(function(num){
+        //         console.log(num.innerHTML);
+        //         let realValue = num.innerHTML;
+
+        //         if(realValue >= 10){
+        //             num.style.backgroundColor = "green";
+        //         }else{
+        //             num.style.backgroundColor = "red";
+        //         }
+        //     })
+        // }
+
+        // DRILL 4
+
+        const btn = document.getElementById("totalBtn");
+
+        btn.onclick = function () {
+            let team = document.querySelectorAll(".team");
+
+            team.forEach(function (teamTeam) {
+
+                let total = 0;
+
+                let paragraph = teamTeam.querySelectorAll(".player");
+                paragraph.forEach(function (play) {
+
+                    let score = parseInt(play.innerHTML.split(": ")[1]);
+                    total += score;
+               
+                });
+
+                teamTeam.innerHTML += `<p>Total : ${total} goals</p>`
+            });
+            // second loop
+
+
+        }
+
+    </script>
+</body>
+
+</html>
