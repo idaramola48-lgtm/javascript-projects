@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+    }
+
+    .formContainer {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        width: 400px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .field {
+        margin-bottom: 20px;
+    }
+
+    .field input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    .field input:focus {
+        outline: none;
+        border-color: #333;
+    }
+
+    .field span {
+        display: block;
+        margin-top: 5px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <div class="formContainer">
+        <h2>Registration</h2>
+        <div class="field">
+            <input type="text" id="username" placeholder="Username">
+            <span id="usernameMsg"></span>
+        </div>
+        <div class="field">
+            <input type="password" id="password" placeholder="Password">
+            <span id="passwordMsg"></span>
+        </div>
+        <div class="field">
+            <input type="text" id="phone" placeholder="+2348012345678">
+            <span id="phoneMsg"></span>
+        </div>
+    </div>
+    <script>
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        let phone = document.getElementById("phone");
+
+        let usernamePattern = /^[a-zA-Z0-9]{5,15}$/;
+        let passwordPattern = /^(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+        let phonePattern = /^\+234\d{10}$/;
+
+
+        username.addEventListener("keyup", function () {
+            let val = this.value;
+            let msg = document.getElementById("usernameMsg");
+
+            if (usernamePattern.test(val)) {
+                msg.innerHTML = "Valid";
+                msg.style.color = "green"
+            } else {
+                msg.innerHTML = "5-15 alphanumeric characters"
+                msg.style.color = "red";
+            }
+        })
+
+        password.addEventListener("keyup", function () {
+            let val = this.value;
+            let msg = document.getElementById("passwordMsg");
+
+            if (passwordPattern.test(val)) {
+                msg.innerHTML = "Valid!";
+                msg.style.color = "green";
+            } else {
+                msg.innerHTML = "must contain characters @!$%, numbers and letters and length of 8";
+                msg.style.color = "red";
+            }
+        });
+        phone.addEventListener("keyup", function () {
+            let val = this.value;
+            let msg = document.getElementById("phoneMsg");
+
+            if (phonePattern.test(val)) {
+                msg.innerHTML = "Valid!";
+                msg.style.color = "green";
+            } else {
+                msg.innerHTML = "must start with +234 with a length of 10 digits";
+                msg.style.color = "red";
+            }
+        })
+    </script>
+</body>
+
+</html>

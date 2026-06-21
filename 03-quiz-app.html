@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+
+    #quizContainer {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        width: 400px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #question {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .optionBtn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 2px solid #333;
+        border-radius: 5px;
+        background: white;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .optionBtn:hover {
+        background-color: #eee;
+    }
+
+    #feedback {
+        margin-top: 15px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    #result {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="quizContainer">
+        <h2 id="question">Question will appear here</h2>
+
+        <div id="options">
+            <button class="optionBtn"></button>
+            <button class="optionBtn"></button>
+            <button class="optionBtn"></button>
+            <button class="optionBtn"></button>
+        </div>
+
+        <p id="feedback"></p>
+    </div>
+
+    <div id="result" style="display:none;">
+        <h2 id="finalScore"></h2>
+        <p id="gradeRemark"></p>
+    </div>
+
+    <script>
+        let questions = [
+            {
+                question: "What is the capital of Nigeria?",
+                options: ["Lagos", "Abuja", "Kano", "Ibadan"],
+                answer: "Abuja"
+            },
+            {
+                question: "What does DOM stand for?",
+                options: ["Document Object Model", "Data Object Model", "Document Oriented Model", "None"],
+                answer: "Document Object Model"
+            },
+            {
+                question: "Which keyword declares a variable in JS?",
+                options: ["var", "let", "const", "All of the above"],
+                answer: "All of the above"
+            },
+            {
+                question: "What does JSON stand for?",
+                options: ["JavaScript Object Notation", "Java Standard Object Notation", "JavaScript Oriented Notation", "None"],
+                answer: "JavaScript Object Notation"
+            }
+        ];
+
+        let currentIndex = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            let current = questions[currentIndex];
+
+            document.getElementById("question").innerHTML = current.question;
+
+            let optionBtns = document.querySelectorAll(".optionBtn");
+
+            optionBtns.forEach(function (btn, index) {
+                btn.innerHTML = current.options[index];
+                btn.style.backgroundColor = "";
+            });
+        }
+        let optionBtns = document.querySelectorAll(".optionBtn");
+        optionBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                let current = questions[currentIndex];
+                let selected = btn.innerHTML;
+
+                if (selected === current.answer) {
+                    btn.style.backgroundColor = "green";
+                    document.getElementById("feedback").innerHTML = "correct";
+                    score++;
+                } else {
+                    btn.style.backgroundColor = "red";
+                    document.getElementById("feedback").innerHTML = "worng!";
+                }
+
+                setTimeout(function () {
+                    currentIndex++;
+
+                    if (currentIndex < questions.length) {
+                        loadQuestion();
+                    } else {
+                        showReasult();
+                    }
+                }, 1000);
+            })
+
+        })
+
+
+        function showReasult() {
+            document.getElementById("quizContainer").style.display = "none";
+            document.getElementById("result").style.display = "block";
+            document.getElementById("finalScore").innerHTML = `Score: ${score}/${questions.length}`;
+
+            let remark = "";
+            if (score === questions.length) {
+                remark = "Excellent"
+            } else if (score >= 3) {
+                remark = "Good"
+            } else {
+                remark = "Keep Practicing"
+            }
+            document.getElementById("gradeRemark").innerHTML = remark;
+        }
+        loadQuestion();
+
+
+    </script>
+</body>
+
+</html>

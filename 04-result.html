@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h2{
+        text-align: center;
+    }
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    th {
+        background-color: #333;
+        color: white;
+        padding: 12px;
+        text-align: left;
+    }
+
+    td {
+        padding: 12px;
+        border: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<body>
+    <h2>Student Results</h2>
+    <table id="resultsTable">
+        <tr>
+            <th id="name">Name</th>
+            <th id="average">Average</th>
+            <th id="status">Status</th>
+        </tr>
+    </table>
+
+
+    <script>
+        let schoolData = '{"classA":[{"name":"Amara","CSC101":72,"CSC102":55,"CSC103":68},{"name":"Chidi","CSC101":40,"CSC102":48,"CSC103":35},{"name":"Ngozi","CSC101":85,"CSC102":90,"CSC103":78},{"name":"Emeka","CSC101":60,"CSC102":52,"CSC103":44}],"classB":[{"name":"Fatima","CSC101":91,"CSC102":88,"CSC103":95},{"name":"Tunde","CSC101":30,"CSC102":45,"CSC103":50},{"name":"Blessing","CSC101":77,"CSC102":63,"CSC103":70},{"name":"Seun","CSC101":55,"CSC102":49,"CSC103":58}]}';
+
+        let mainData = JSON.parse(schoolData);
+        let mainDataA = mainData.classA;
+        let mainDataB = mainData.classB;
+
+        let allStudents = [];
+
+        for (i = 0; i < mainDataA.length; i++) {
+            allStudents.push(mainDataA[i]);
+        }
+
+        for (i = 0; i < mainDataB.length; i++) {
+            allStudents.push(mainDataB[i]);
+        }
+
+        console.log(allStudents)
+
+        for (j = 0; j < allStudents.length; j++) {
+            let datas = allStudents[j];
+            let name = datas.name;
+            let cos101 = datas.CSC101;
+            let cos102 = datas.CSC102;
+            let cos103 = datas.CSC103;
+
+
+            let average = 0;
+            average = (cos101 + cos102 + cos103) / 3;
+            let status = average >= 50 ? "Pass" : "Fail"
+
+            let row = document.createElement("tr");
+            row.innerHTML = `
+             <td>${name}</td>
+             <td>${average}</td>
+             <td>${status}</td>
+            `
+
+            if (average > 50) {
+                row.style.backgroundColor = "green";
+                row.style.backgroundColor = "white"
+            } else {
+                row.style.backgroundColor = "red";
+                row.style.Color = "white"
+
+            }
+
+            document.getElementById("resultsTable").appendChild(row);
+        }
+
+    </script>
+</body>
+
+</html>

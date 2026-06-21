@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Book {
+            constructor(title, author, year, available) {
+                this.title = title;
+                this.author = author;
+                this.year = year;
+                this.available = true
+            }
+
+        }
+
+        class Library {
+            constructor() {
+                this.books = [];
+            }
+
+            addBook(book) {
+                this.books.push(book);
+            }
+
+            borrowBook(title) {
+                for (let i = 0; i < this.books.length; i++) {
+                    if (this.books[i].title === title) {
+                        this.books[i].available = false;
+                    }
+                }
+            }
+
+            returnBook(title) {
+                for (let i = 0; i < this.books.length; i++) {
+                    if (this.books[i].title === title) {
+                        this.books[i].available = true;
+                    }
+                }
+            }
+
+            listAvailable() {
+                for (let i = 0; i < this.books.length; i++) {
+                    if (this.books[i].available === true) {
+                        console.log(this.books[i].title);
+                    }
+                }
+            }
+        }
+
+        let book1 = new Book("CSC 104", "Dr. Lawal", 2024);
+        let book2 = new Book("COS101", "Dr. Michael", 2025);
+        let book3 = new Book("CSC106", "Dr. Olorunwa", 2006);
+
+        let library = new Library();
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+
+        console.log("All available:");
+        library.listAvailable();
+
+        library.borrowBook("Things Fall Apart");
+        console.log("After borrowing:");
+        library.listAvailable();
+
+        library.returnBook("Things Fall Apart");
+        console.log("After returning:");
+        library.listAvailable();
+
+    </script>
+</body>
+
+</html>
